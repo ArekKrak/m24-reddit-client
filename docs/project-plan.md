@@ -66,7 +66,7 @@ Build a responsive Reddit client using React and Redux that lets users browse po
 	- Show error message + retry.
 	- Handle reddit rate limits gracefully.
 8. Design polish & animations:
-	- Cohesive styles (colors spacing, typography).
+	- Cohesive styles (colors, spacing, typography).
 	- Small transitions (hover, loading transitions).
 9. Testing & quality:
 	- Unit tests for critical reducers and components.
