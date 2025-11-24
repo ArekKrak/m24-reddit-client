@@ -78,11 +78,11 @@ Build a responsive Reddit client using React and Redux that lets users browse po
 	
 ## TIMELINE
 
-### **Phase 1:** Setup + Reddit API + basic posts list.
-### **Phase 2:** Search & filters.
-### **Phase 3:** Post detail + comments + Markdown.
-### **Phase 4:** Error/loading UX + responsiveness.
-### **Phase 5:** Design polish, testing, deploy, Lighthouse.
+**Phase 1:** Setup + Reddit API + basic posts list.\
+**Phase 2:** Search & filters.\
+**Phase 3:** Post detail + comments + Markdown.\
+**Phase 4:** Error/loading UX + responsiveness.\
+**Phase 5:** Design polish, testing, deploy, Lighthouse.
 
 
 
