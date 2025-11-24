@@ -1,11 +1,11 @@
 export default function Header() {
 
     return (
-        <header>
+        <header className="header-style">
             <h1>Reddit Light</h1>
-            <div>
-                <input type="text" placeholder="Search Reddit..." />
-                <button>Search</button>
+            <div className="header-search">
+                <input className="header-placeholder" type="text" placeholder="Search Reddit..." />
+                <button className="header-button">Search</button>
             </div>
         </header>
     );
