@@ -1,8 +1,8 @@
-PROJECT GOAL
+# PROJECT GOAL
 
 Build a responsive Reddit client using React and Redux that lets users browse popular posts, search Reddit, filter by subreddit, and view post details with comments (including Markdown rendering) provided by Reddit API. The app will be tested, deployed, and optimised to score 90+ on Lighthouse (except media-related performance).
 
-TECH STACK - WHAT IT'S BUILT WITH
+## TECH STACK - WHAT IT'S BUILT WITH
 
 - Frontend: React (CRA), React Router (for detail view), CSS (plain, modules, maybe a small utility library later).
 - State management: Redux Toolkit + React-Redux.
@@ -15,18 +15,18 @@ TECH STACK - WHAT IT'S BUILT WITH
 - Deployment: Netlify / GitHub Pages.
 - Monitoring quality: Chrome DevTools + Lighthouse + Redux DevTools.
 
-MINIMUM VIABLE PRODUCT - FEATURE LIST:
+## MINIMUM VIABLE PRODUCT - FEATURE LIST:
 
 1. Initial feed:
-	- On first load, show a list of posts (e.g. /r/news).
+	- On first load, show a list of posts (e.g. `/r/news`).
 2. Search:
-	- Search box to query Reddit (/search.json?q=...).
+	- Search box to query Reddit (`/search.json?q=...`).
 	- Show results in the same post list view.
 3. Filter by predefined categories:
-	- A sidebar or header with a fixed list of subreddits (e.g. r/python, r/javascript, r/reactjs).
+	- A sidebar or header with a fixed list of subreddits (e.g. `r/python`, `r/javascript`, `r/reactjs`).
 	- Clicking a subreddit reloads the list for that subreddit.
 4. Post detail view with comments:
-	- Click a post → open a modal or navigate to /post/:id.
+	- Click a post → open a modal or navigate to `/post/:id`.
 	- Shows the post plus comments loaded from the JSON API.
 	- Comments render Markdown correctly.
 5. Basic UX states:
@@ -38,18 +38,18 @@ MINIMUM VIABLE PRODUCT - FEATURE LIST:
 	- Deployed to a live URL.
 	- 90+ scores except possible hit on Performance because of Reddit media.
 	
-NATURAL BREAK POINTS - MY ROADMAP	
+## NATURAL BREAK POINTS - MY ROADMAP	
 
 1. Base setup & cleanup:
 	- CRA + Redux template clean.
 	- Project repo + GitHub Project board created.
 2. Reddit API layer:
-	- Create src/api/reddit.js.
-	- Functions like getPopularPosts(), searchPosts(term), getPostWithComments(permalink).
+	- Create `src/api/reddit.js`.
+	- Functions like `getPopularPosts()`, `searchPosts(term)`, `getPostWithComments(permalink)`.
 3. Redux slices & store:
 	- `posts` slice for the main feed / search.
 	- `subreddits` slice for sidebar filters (optional at first; list can be hardcoded).
-	- Possibly a small ui slice for global loading/error later.
+	- Possibly a small `ui` slice for global loading/error later.
 4. Core UI layout:
 	- Header (search bar + title).
 	- Main area: posts list + (optional) subreddit sidebar.
@@ -76,13 +76,13 @@ NATURAL BREAK POINTS - MY ROADMAP
 	- Deploy to Netlify / GitHub Pages.
 	- Write README sections (wireframes, tech, features, future work).
 	
-TIMELINE
+## TIMELINE
 
-Phase 1: Setup + Reddit API + basic posts list.
-Phase 2: Search & filters.
-Phase 3: Post detail + comments + Markdown.
-Phase 4: Error/loading UX + responsiveness.
-Phase 5: Design polish, testing, deploy, Lighthouse.
+**Phase 1:** Setup + Reddit API + basic posts list.
+**Phase 2:** Search & filters.
+**Phase 3:** Post detail + comments + Markdown.
+**Phase 4:** Error/loading UX + responsiveness.
+**Phase 5:** Design polish, testing, deploy, Lighthouse.
 
 
 
