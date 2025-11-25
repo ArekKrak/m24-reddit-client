@@ -1,3 +1,5 @@
+// The SubredditList component shows the sidebar "Subreddits" and the subreddit topics
+
 import './SubredditList.css';
 
 export default function SubredditList({ subreddits }) {

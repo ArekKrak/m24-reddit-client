@@ -1,3 +1,5 @@
+// The Header component shows the app title "Reddit Light" and the search input & button
+
 import './Header.css';
 
 export default function Header() {
