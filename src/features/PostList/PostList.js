@@ -1,0 +1,1 @@
+// The PostList component gets an array of posts, loops over them.

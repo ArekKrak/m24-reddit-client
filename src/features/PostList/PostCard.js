@@ -1,0 +1,1 @@
+// The PostCard component gets a single post and displays it nicely.
