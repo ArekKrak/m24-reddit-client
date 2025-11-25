@@ -10,3 +10,8 @@
     margin: 0;
     padding: 0;
 }
+
+.sidebar-ulist-item:hover {
+    background-color: #FF9A00;
+    cursor: pointer;
+}

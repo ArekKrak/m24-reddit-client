@@ -4,12 +4,15 @@ import Header from './features/Header/Header';
 import SubredditList from './features/SubredditList/SubredditList';
 
 function App() {
-  subredditsArray = ['news', 'python', 'javascript', 'reactjs'];
+  const MOCK_SUBREDDITS = ['news', 'python', 'javascript', 'reactjs'];
 
   return (
     <div className="App">
       <Header />
-      <SubredditList subredditsArray={subredditsArray} />
+      <main className='layout'>
+        <SubredditList subreddits={MOCK_SUBREDDITS} />
+        <div>Post list will go here</div>
+      </main>
     </div>
   );
 }
