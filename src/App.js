@@ -2,42 +2,43 @@ import React from 'react';
 import './App.css';
 import Header from './features/Header/Header';
 import SubredditList from './features/SubredditList/SubredditList';
+import PostList from './features/PostList/PostList';
 
 function App() {
   const MOCK_SUBREDDITS = ['news', 'python', 'javascript', 'reactjs'];
   const MOCK_POSTS = [
     {
       id: '1',
-      title: 'Breaking: The President of the Russian Federation, Vladimir Vladimirovich Putin backs US plan for ending Ukraine war as Trump gives Kyiv deadline to accept',
-      author: 'Rorey Bosotti',
+      title: 'HUGE news in my town\'s newspaper today',
+      author: 'MadeMeSmile',
       subreddit: 'news',
-      score: 155,
-      noOfComments: 221
+      score: 231,
+      noOfComments: 11
     },
     {
       id: '2',
-      title: 'Python 3.15.0 alpha 2',
-      author: 'Steve Dower',
+      title: 'How I learned Python ',
+      author: 'PythonLearning',
       subreddit: 'python',
-      score: 32,
-      noOfComments: 7
+      score: 99,
+      noOfComments: 134
     },
     {
       id: '3',
-      title: 'Node.js 22.18 LTS',
-      author: 'John Doe',
+      title: 'How much JavaScript is actually “enough”?',
+      author: 'webdev',
       subreddit: 'javascript',
-      score: 50,
-      noOfComments: 4
+      score: 146,
+      noOfComments: 103
     },
     {
       id: '4',
-      title: 'Records & Tuples for React',
-      author: 'Sébastien Lorber',
+      title: 'Why use React over plain HTML and JavaScript',
+      author: 'RennugunneR',
       subreddit: 'reactjs',
-      score: 39,
-      noOfComments: 12
-    },
+      score: 0,
+      noOfComments: 29
+    }
   ];
 
   return (
@@ -45,7 +46,7 @@ function App() {
       <Header />
       <main className='layout'>
         <SubredditList subreddits={MOCK_SUBREDDITS} />
-        <div>Post list will go here</div>
+        <PostList posts={MOCK_POSTS} />
       </main>
     </div>
   );
