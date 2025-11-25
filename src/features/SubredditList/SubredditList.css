@@ -1,0 +1,12 @@
+.sidebar-aside {
+    display: block;
+    width: 220px;
+    background-color: #4C63AC;
+    padding: 10px;
+}
+
+.sidebar-ulist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

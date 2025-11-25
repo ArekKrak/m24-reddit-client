@@ -1,9 +1,9 @@
 import './SubredditList.css';
 
 export default function SubredditList({ subreddits }) {
-    <aside>
+    <aside className='sidebar-aside'>
         <h2>Subreddits</h2>
-        <ul>
+        <ul className='sidebar-ulist'>
             {subreddits.map((name) => (
                 <li key={name}>r/{name}</li>
             ))}
