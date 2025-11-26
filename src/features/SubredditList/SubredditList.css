@@ -3,7 +3,7 @@
     width: 220px;
     background-color: #4C63AC;
     padding: 10px;
-    border: 3px solid #092C8A;
+    border-right: 3px solid #092C8A;
 }
 
 .sidebar-ulist {
