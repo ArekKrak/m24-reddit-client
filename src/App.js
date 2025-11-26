@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './features/Header/Header';
 import SubredditList from './features/SubredditList/SubredditList';
 import PostList from './features/PostList/PostList';
+import { fetchSubredditPosts } from './api/reddit';
 
 function App() {
   const MOCK_SUBREDDITS = ['news', 'python', 'javascript', 'reactjs'];
