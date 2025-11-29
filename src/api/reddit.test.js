@@ -59,3 +59,8 @@ describe("fetchSubredditPosts", () => {
         await expect(fetchSubredditPosts("reactjs")).rejects.toThrow("Reddit API error: 500 Internal Server Error");
     });
 });
+
+/* The API was properly tested from three angles:
+    - Correct URL
+    - Correct happy-path return value
+    - Correct error handling for non-OK response */
