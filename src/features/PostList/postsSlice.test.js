@@ -31,4 +31,30 @@ describe("postsSlice", () => {
         expect(state.status).toBe("idle");
         expect(state.error).toBeNull();
     });
+    it("sets status when setStatus is dispatched", () => {
+        const previousState = {
+            items: [],
+            status: "idle",
+            error: null
+        };
+        /* Call the reducer */
+        const state = postsReducer(previousState, setStatus("loading"));
+
+        expect(state.items).toEqual([]);
+        expect(state.status).toBe("loading");
+        expect(state.error).toBeNull();
+    });
+    it("sets error message when setError is dispatched", () => {
+        const previousState = {
+            items: [],
+            status: "idle",
+            error: null
+        };
+        /* Call the reducer */
+        const state = postsReducer(previousState, setError("Something went wrong"));
+
+        expect(state.items).toEqual([]);
+        expect(state.status).toBe("idle");
+        expect(state.error).toBe("Something went wrong");
+    });
 });
