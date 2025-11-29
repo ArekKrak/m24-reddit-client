@@ -20,6 +20,6 @@ describe("fetchSubredditPosts", () => {
         await fetchSubredditPosts("reactjs");
         /* Check if `fetch` was called once and if the URL contains the subreddit name with `.json` at the end */
         expect(fetch).toHaveBeenCalledTimes(1);
-        expect(fetch).toHaveBeenCalledWith("https://www.reddit.com/r/reactjs.json");
+        expect(fetch).toHaveBeenCalledWith("https://api.reddit.com/r/reactjs.json");
     });
 });
