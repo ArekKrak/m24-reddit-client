@@ -2,14 +2,20 @@
 
 import './SubredditList.css';
 
-export default function SubredditList({ subreddits }) {
+export default function SubredditList({ subreddits, onSelectSubreddit }) {
 
     return (
         <aside className='sidebar-aside'>
             <h2>Subreddits</h2>
             <ul className='sidebar-ulist'>
                 {subreddits.map((name) => (
-                    <li className='sidebar-ulist-item' key={name}>r/{name}</li>
+                    <li 
+                        className='sidebar-ulist-item'
+                        key={name}
+                        onClick={() => onSelectSubreddit && onSelectSubreddit(name)}
+                    >
+                        r/{name}
+                    </li>
                 ))}
             </ul>
         </aside>
