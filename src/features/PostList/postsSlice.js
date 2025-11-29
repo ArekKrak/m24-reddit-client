@@ -45,7 +45,7 @@ const postsSlice = createSlice({
             state.items = action.payload;
         });
         /* Triggered when the thunk throws or calls `rejectWithValue` */
-        builder.addCase(fetchPostsForSubreddit.pending, (state, action) => {
+        builder.addCase(fetchPostsForSubreddit.rejected, (state, action) => {
             state.status = "failed";
             state.error = action.payload || action.error.message;
         });
