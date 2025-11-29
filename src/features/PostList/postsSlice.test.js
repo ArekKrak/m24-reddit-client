@@ -100,7 +100,7 @@ describe("postsSlice", () => {
             error: null
         };
         /* Call the reducer */
-        const action = { type: fetchPostsForSubreddit.fulfilled.type, payload: "Network error" };
+        const action = { type: fetchPostsForSubreddit.rejected.type, payload: "Network error" };
         const state = postsReducer(previousState, action);
 
         expect(state.items).toEqual(previousState.items);
