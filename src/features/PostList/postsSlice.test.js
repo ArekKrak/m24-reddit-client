@@ -1,4 +1,4 @@
-import postsReducer, { setPosts, setStatus, setError } from "./postsSlice";
+import postsReducer, { setPosts, setStatus, setError, fetchPostsForSubreddit } from "./postsSlice";
 
 describe("postsSlice", () => {
     /* When reducer is called with `undefined` state and an unknown action, it should return the initial state 
@@ -56,5 +56,55 @@ describe("postsSlice", () => {
         expect(state.items).toEqual([]);
         expect(state.status).toBe("idle");
         expect(state.error).toBe("Something went wrong");
+    });
+
+    /* How the reducer reacts to the thunk's `pending` action; how it reacts to the `fulfilled` action; 
+    how it reacts to the `rejected` action */
+    it("reacts to the pending action", () => {
+        const previousState = {
+            items: [],
+            status: "idle",
+            error: "Previous error"
+        };
+        /* Call the reducer */
+        const action = { type: fetchPostsForSubreddit.pending.type };
+        const state = postsReducer(previousState, action);
+
+        expect(state.items).toEqual(previousState.items);
+        expect(state.status).toBe("loading");
+        expect(state.error).toBeNull();
+    });
+    it("reacts to the fulfilled action", () => {
+        const previousState = {
+            items: [],
+            status: "loading",
+            error: null
+        };
+        /* Mock posts */
+        const mockPosts = [
+            { id: "post1", title: "First", author: "katie" },
+            { id: "post2", title: "Second", author: "mike" }
+        ];
+        /* Call the reducer */
+        const action = { type: fetchPostsForSubreddit.fulfilled.type, payload: mockPosts };
+        const state = postsReducer(previousState, action);
+
+        expect(state.items).toEqual(mockPosts);
+        expect(state.status).toBe("succeeded");
+        expect(state.error).toBeNull();
+    });
+    it("reacts to the rejected action", () => {
+        const previousState = {
+            items: [],
+            status: "loading",
+            error: null
+        };
+        /* Call the reducer */
+        const action = { type: fetchPostsForSubreddit.fulfilled.type, payload: "Network error" };
+        const state = postsReducer(previousState, action);
+
+        expect(state.items).toEqual(previousState.items);
+        expect(state.status).toBe("failed");
+        expect(state.error).toBe("Network error");
     });
 });
