@@ -16,7 +16,7 @@ const postsSlice = createSlice({
         setStatus(state, action) {
             state.status = action.payload;
         },
-        setError(state,action) {
+        setError(state, action) {
             state.error = action.payload;
         }
     }
