@@ -11,7 +11,7 @@ describe("PostCard", () => {
         subreddit: "javascript",
         author: "testuser",
         title: "A sample post title",
-        score: 123,
+        score: 107,
         noOfComments: 45
     };
     it("renders subreddit, author, title, and footer", async () => {
