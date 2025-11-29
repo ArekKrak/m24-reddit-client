@@ -12,4 +12,23 @@ describe("postsSlice", () => {
             error: null
         });
     });
+    /* Given some previous state and an array of posts, `setPosts` should replace `items` with that array */
+    it("sets items when setPosts is dispatched", () => {
+        const previousState = {
+            items: [],
+            status: "idle",
+            error: null
+        };
+        /* Mock posts */
+        const mockPosts = [
+            { id: "post1", title: "First", author: "katie" },
+            { id: "post2", title: "Second", author: "mike" }
+        ];
+        /* Call the reducer */
+        const state = postsReducer(previousState, setPosts(mockPosts));
+
+        expect(state.items).toEqual(mockPosts);
+        expect(state.status).toBe("idle");
+        expect(state.error).toBeNull();
+    });
 });
