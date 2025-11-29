@@ -40,4 +40,22 @@ describe("fetchSubredditPosts", () => {
         /* Another one to check the actual contents */
         expect(posts[0]).toEqual({ id: "post1", title: "First", author: "katie" })
     });
+    /* Test non-OK response should throw */
+    it("throws an error when Reddit responds with a non-OK status", async () => {
+        /* Mock `fetch` to resolve with a bad status */
+        fetch.mockResolvedValueOnce({
+            ok: false,
+            status: 500,
+            statusText: "Internal Server Error",
+            json: async () => ({
+                data: {
+                    children: [
+                        { data: { id: "post1", title: "First", author: "katie" } },
+                        { data: { id: "post2", title: "Second", author: "mike" } },
+                    ]
+                }
+            })
+        })
+        await expect(fetchSubredditPosts("reactjs")).rejects.toThrow("Reddit API error: 500 Internal Server Error");
+    });
 });
