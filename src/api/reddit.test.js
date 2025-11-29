@@ -22,4 +22,22 @@ describe("fetchSubredditPosts", () => {
         expect(fetch).toHaveBeenCalledTimes(1);
         expect(fetch).toHaveBeenCalledWith("https://api.reddit.com/r/reactjs.json");
     });
+    it("returns an array of posts objects from the reddit response", async () => {
+        fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => ({
+                data: {
+                    children: [
+                        { data: { id: "post1", title: "First", author: "katie" } },
+                        { data: { id: "post2", title: "Second", author: "mike" } },
+                    ]
+                }
+            })
+        });
+        const posts = await fetchSubredditPosts("reactjs");
+        /* An expectation to check the length */
+        expect(posts).toHaveLength(2);
+        /* Another one to check the actual contents */
+        expect(posts[0]).toEqual({ id: "post1", title: "First", author: "katie" })
+    });
 });
