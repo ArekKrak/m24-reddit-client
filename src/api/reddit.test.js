@@ -29,7 +29,7 @@ describe("fetchSubredditPosts", () => {
                 data: {
                     children: [
                         { data: { id: "post1", title: "First", author: "katie" } },
-                        { data: { id: "post2", title: "Second", author: "mike" } },
+                        { data: { id: "post2", title: "Second", author: "mike" } }
                     ]
                 }
             })
