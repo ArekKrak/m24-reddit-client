@@ -3,6 +3,7 @@
 import { useState } from 'react'; // Store the current search text using state
 import './Header.css';
 
+/* Implement controlled search input */
 export default function Header({ onSearch }) { // By adding `onSearch`, this function now lets the parent (`App`) decide what "search" does
     /* Local state so that `term` mirrors whatever is in the text box; `setTerm` updates it */
     const [term, setTerm] = useState("");
