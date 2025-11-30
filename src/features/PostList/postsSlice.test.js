@@ -9,7 +9,8 @@ describe("postsSlice", () => {
         expect(state).toEqual({
             items: [],
             status: "idle",
-            error: null
+            error: null,
+            currentSubreddit: null
         });
     });
     /* Given some previous state and an array of posts, `setPosts` should replace `items` with that array */
@@ -67,12 +68,13 @@ describe("postsSlice", () => {
             error: "Previous error"
         };
         /* Call the reducer */
-        const action = { type: fetchPostsForSubreddit.pending.type };
+        const action = { type: fetchPostsForSubreddit.pending.type, meta: { arg: "reactjs" } };
         const state = postsReducer(previousState, action);
 
         expect(state.items).toEqual(previousState.items);
         expect(state.status).toBe("loading");
         expect(state.error).toBeNull();
+        expect(state.currentSubreddit).toBe("reactjs");
     });
     it("reacts to the fulfilled action", () => {
         const previousState = {
