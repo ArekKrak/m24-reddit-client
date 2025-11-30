@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+.error-banner p {
+  margin: 10px auto;
+  padding: 10px 0;
+  background-color: #F50000;
+  color: #EFEFEF;
+  border-radius: var(--radius-md);
+  width: 45%;
+}
+
 .App-header {
   min-height: 100vh;
   display: flex;
