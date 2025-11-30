@@ -54,7 +54,30 @@
 }
 
 .retry-button {
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-md);
+  border: none;
   cursor: pointer;
+  background-color: var(--color-accent);
+  color: #000;
+  font-weight: 500;
+  transition:
+		background-color var(--transition-fast),
+		transform var(--transition-fast),
+		box-shadow var(--transition-fast);
+}
+
+.retry-button:hover:enabled {
+  background-color: #FFD94D;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.retry-button:disabled {
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+  cursor: default;
 }
 
 @media (max-width: 768px) {
