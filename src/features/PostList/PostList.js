@@ -2,7 +2,7 @@
 import './PostList.css';
 import PostCard from "./PostCard";
 
-export default function PostList({ posts }) {
+export default function PostList({ posts, onPostSelect }) {
 
 	return (
 		<section className="postlist-style">
@@ -10,6 +10,7 @@ export default function PostList({ posts }) {
 				<PostCard 
 					key={post.id} 
 					post={post}
+					onSelect={() => onPostSelect && onPostSelect(post)}
 				/>
 			))}
 		</section>
