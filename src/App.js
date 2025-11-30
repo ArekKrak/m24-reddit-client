@@ -5,6 +5,7 @@ import './App.css';
 import Header from './features/Header/Header';
 import SubredditList from './features/SubredditList/SubredditList';
 import PostList from './features/PostList/PostList';
+import PostDetailModal from './features/PostList/PostDetailModal';
 
 function App() {
   const MOCK_SUBREDDITS = ['news', 'python', 'javascript', 'reactjs'];
@@ -108,6 +109,9 @@ function App() {
         <SubredditList subreddits={MOCK_SUBREDDITS} onSelectSubreddit={handleSubredditClick} />
         <PostList posts={postsToShow} onPostSelect={handlePostSelect} />
       </main>
+      {selectedPost && (
+        <PostDetailModal post={selectedPost} onClose={handleClosePost} />
+      )}
     </div>
   );
 }
