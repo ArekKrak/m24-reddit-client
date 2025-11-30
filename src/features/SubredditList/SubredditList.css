@@ -35,3 +35,10 @@
 	background-color: var(--color-surface);
 	transform: translateX(1px);
 }
+
+@media (max-width: 768px) {
+	.sidebar-aside {
+		width: 100%;
+		order: 2; 
+	}
+}
