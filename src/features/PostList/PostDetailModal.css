@@ -22,3 +22,8 @@
     gap: 0.75rem;
     animation: modal-pop-in 150ms ease-out;
 }
+
+.comment-button {
+    margin: 0 auto;
+    width: 6rem;
+}
