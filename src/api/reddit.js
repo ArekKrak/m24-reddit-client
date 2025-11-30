@@ -1,7 +1,7 @@
 /* Data flow:
 Build URL > `fetch` it > throw an `Error` if status is bad > parse JSON > extract `children[].data` > return array of posts. */
 
-const BASE_URL = 'https://api.reddit.com';
+const BASE_URL = 'https://www.reddit.com';
 
 export async function fetchSubredditPosts(subreddit) {
   const url = `${BASE_URL}/r/${subreddit}.json`;
