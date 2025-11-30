@@ -1,5 +1,6 @@
 .sidebar-aside {
 	display: block;
+	flex: 0 0 220px;
 	width: 220px;
 	background-color: var(--color-surface-soft);
 	color: var(--color-text-main);
