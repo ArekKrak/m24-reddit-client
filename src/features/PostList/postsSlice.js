@@ -68,16 +68,16 @@ const postsSlice = createSlice({
 			state.status = "failed";
 			state.error = action.payload || action.error.message;
 		});
-		builder.addCase(fetchCommentsForPost.pending, (state) => { // just started loading comments
+		builder.addCase(fetchCommentsForPostThunk.pending, (state) => { // just started loading comments
 			state.commentsStatus = "loading";
 			state.commentsError = null;
 		});
-		builder.addCase(fetchCommentsForPost.fulfilled, (state, action) => { // got comments, save them
+		builder.addCase(fetchCommentsForPostThunk.fulfilled, (state, action) => { // got comments, save them
 			state.commentsStatus = "succeeded";
 			state.comments = action.payload;
 			state.commentsError = null;
 		});
-		builder.addCase(fetchCommentsForPost.rejected, (state, action) => { // failed, save error for the UI to show
+		builder.addCase(fetchCommentsForPostThunk.rejected, (state, action) => { // failed, save error for the UI to show
 			state.commentsStatus = "failed";
 			state.commentsError = action.payload || action.error.message;
 		});
