@@ -20,4 +20,17 @@ describe("Header", () => {
         expect(handleSearch).toHaveBeenCalledTimes(1);
         expect(handleSearch).toHaveBeenCalledWith("python");
     });
+    it("never calls `onSearch` with empty/whitespace", () => {
+        const handleSearch = jest.fn();
+
+        render(<Header onSearch={handleSearch}/>);
+
+        const input = screen.getByPlaceholderText("");
+        fireEvent.change(input, { target: { value: " python " } });
+        const button = screen.getByRole("button", { name: /search/i });
+        fireEvent.click(button);
+
+        expect(handleSearch).toHaveBeenCalledTimes(1);
+        expect(handleSearch).not.toHaveBeenCalled();
+    });
 });
