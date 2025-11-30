@@ -8,6 +8,8 @@ import Header from "./Header";
 describe("Header", () => {
     
     it("renders the `onSearch` calls with trimmed text", () => {
+        render(<Header onSearch={handleSearch}/>);
+
         const handleSearch = jest.fn();
         const input = screen.getByPlaceholderText("Search Reddit...");
         fireEvent.change(input, { target: { value: " python " } });
@@ -16,7 +18,5 @@ describe("Header", () => {
 
         expect(handleSearch).toHaveBeenCalledTimes(1);
         expect(handleSearch).toHaveBeenCalledWith("python");
-
-        render(<Header onSearch={handleSearch}/>)
     });
 });
