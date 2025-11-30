@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchSubredditPosts } from "../../api/reddit";
+import { fetchSubredditPosts, fetchCommentsForPost } from "../../api/reddit";
 
 const initialState = {
 	items: [],  // array of post objects
