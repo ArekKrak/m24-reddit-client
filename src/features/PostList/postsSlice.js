@@ -23,6 +23,20 @@ export const fetchPostsForSubreddit = createAsyncThunk(
 	}
 );
 
+/* A thunk for comments */
+export const fetchCommentsForPostThunk = createAsyncThunk(
+	"posts/fetchCommentsForPost",
+	async (postId, { rejectWithValue }) => {
+		try {
+			const comments = await fetchCommentsForPost(postId);
+			return comments; // this becomes action.payload in "fulfilled"
+		} catch (error) {
+			// give a readable error string to the reducer
+			return rejectWithValue(error.message || "Failed to load comments");
+		}
+	}
+);
+
 const postsSlice = createSlice({
 	name: "posts",
 	initialState,
