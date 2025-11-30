@@ -7,6 +7,19 @@
 	padding: 10px;
 }
 
+.header-search {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.header-placeholder {
+	padding: 0.35rem 0.5rem;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+	min-width: 220px;
+}
+
 .header-button {
 	padding: 0.45rem 0.9rem;
 	border-radius: var(--radius-md);
@@ -26,3 +39,24 @@
 		transform: translateY(-1px);
 		box-shadow: var(--shadow-soft);
 	}
+
+@media (max-width: 768px) {
+	.header-style {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.75rem;
+	}
+
+	.header-search {
+		width: 100%;
+	}
+
+	.header-placeholder {
+		flex: 1 1 auto;
+		width: 100%;    /* input spans full width */
+	}
+
+	.header-button {
+		flex-shrink: 0;		/* button keeps its size */
+	}
+}
