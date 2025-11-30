@@ -73,7 +73,7 @@ describe("postsSlice", () => {
 
         expect(state.items).toEqual(previousState.items);
         expect(state.status).toBe("loading");
-        expect(state.error).toBeNull();
+        expect(state.error).toBe("Previous error");
         expect(state.currentSubreddit).toBe("reactjs");
     });
     it("reacts to the fulfilled action", () => {

@@ -38,13 +38,13 @@ const postsSlice = createSlice({
         /* Triggered when the thunk is dispatched and it has just started */
         builder.addCase(fetchPostsForSubreddit.pending, (state, action) => {
             state.status = "loading";
-            state.error = null;
             state.currentSubreddit = action.meta.arg;
         });
         /* Triggered when thunk finishes successfully and returns `posts` */
         builder.addCase(fetchPostsForSubreddit.fulfilled, (state, action) => {
             state.status = "succeeded";
             state.items = action.payload;
+            state.error = null;
         });
         /* Triggered when the thunk throws or calls `rejectWithValue` */
         builder.addCase(fetchPostsForSubreddit.rejected, (state, action) => {
