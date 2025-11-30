@@ -26,9 +26,9 @@ export const fetchPostsForSubreddit = createAsyncThunk(
 /* A thunk for comments */
 export const fetchCommentsForPostThunk = createAsyncThunk(
 	"posts/fetchCommentsForPost",
-	async (postId, { rejectWithValue }) => {
+	async (permalink, { rejectWithValue }) => {
 		try {
-			const comments = await fetchCommentsForPost(postId);
+			const comments = await fetchCommentsForPost(permalink);
 			return comments; // this becomes action.payload in "fulfilled"
 		} catch (error) {
 			// give a readable error string to the reducer
