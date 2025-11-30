@@ -85,7 +85,7 @@ function App() {
               : <>Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.</>
             }
           </p>
-          <button type='button' onClick={handleRetry}>
+          <button className='retry-button' type='button' onClick={handleRetry}>
             Retry
           </button>
         </div>
