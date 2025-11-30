@@ -47,6 +47,7 @@ function App() {
   const posts = useSelector((state) => state.posts.items);
   const status = useSelector((state) => state.posts.status);
   const error = useSelector((state) => state.posts.error);
+  const currentSubreddit = useSelector((state) => state.posts.currentSubreddit);
   const isLoading = status === "loading";
   /* If live Reddit is down, show demo data instead of a blank screen - a nice fallback behaviour */
   const postsToShow = error && posts.length === 0 ? MOCK_POSTS : posts;
