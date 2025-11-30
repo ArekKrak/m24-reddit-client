@@ -14,8 +14,8 @@ export default function PostDetailModal({ post, onClose }) {
 
 	/* When the modal opens (or the post changes) fetch its comments */
 	useEffect(() => {
-		if (!post) return;		// safety: do nothing if post is missing
-		dispatch(fetchCommentsForPostThunk(post.id));
+		if (!post || !post.permalink) return;		// safety: do nothing if post is missing
+		dispatch(fetchCommentsForPostThunk(post.permalink));
 	}, [dispatch, post]);
 
 	return (
