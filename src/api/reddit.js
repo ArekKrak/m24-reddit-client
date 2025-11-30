@@ -33,3 +33,26 @@ export async function fetchSubredditPosts(subreddit) {
   const posts = json.data.children.map((child) => child.data); /* - maps to `posts` */
   return posts;
 }
+
+/* This function mirrors `fetchSubredditPosts()`: URL > fetch > check > json > map */
+export async function fetchCommentsForPost(postId) {
+  /* Build URL like: https://api.reddit.com/comments/<postId>.json */
+  const url = `${BASE_URL}/comments/${postId}.json`;
+  /* Call the API */
+  const response = await fetch(url);
+  /* If the response is not OK (status 200-299), throw an error */
+  if (!response.ok) {
+    throw new Error(`Failed to load comments: ${response.status}`);
+  }
+  /* Parse JSON body */
+  const json = await response.json();
+
+  /* Reddit returns: [postListing, commentsListing] */
+
+  /* We want the second element's children array */
+  const commentChildren = json[1].data.children;
+  /* Each child has a .data object that is the actual comment */
+  const comments = commentChildren.map((child) => child.data);
+  /* Return an array of raw comment objects */
+  return comments;
+}
