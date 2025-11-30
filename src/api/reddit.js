@@ -1,11 +1,10 @@
 /* Data flow:
 Build URL > `fetch` it > throw an `Error` if status is bad > parse JSON > extract `children[].data` > return array of posts. */
 
-const BASE_URL = 'https://api.reddit.com';
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+const BASE_PATH = '';
 
 export async function fetchSubredditPosts(subreddit) {
-  const url = `${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/r/${subreddit}.json`)}`;
+  const url = `${BASE_PATH}/r/${subreddit}.json`;
   /* fetch(url) - starts an HTTP request and returns a Promise.
       await - pauses this async function until the response arrives. */
   const response = await fetch(url);
@@ -38,7 +37,7 @@ export async function fetchSubredditPosts(subreddit) {
 /* This function mirrors `fetchSubredditPosts()`: URL > fetch > check > json > map */
 export async function fetchCommentsForPost(postId) {
   /* Build URL like: https://api.reddit.com/comments/<postId>.json */
-  const url = `${CORS_PROXY}${encodeURIComponent(`${BASE_URL}/comments/${postId}.json`)}`;
+  const url = `${BASE_PATH}/comments/${postId}.json`;
   /* Call the API */
   const response = await fetch(url);
   /* If the response is not OK (status 200-299), throw an error */
