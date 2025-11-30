@@ -106,7 +106,7 @@ function App() {
       )}
       <main className='layout'>
         <SubredditList subreddits={MOCK_SUBREDDITS} onSelectSubreddit={handleSubredditClick} />
-        <PostList posts={postsToShow} />
+        <PostList posts={postsToShow} onPostSelect={handlePostSelect} />
       </main>
     </div>
   );
