@@ -39,7 +39,7 @@ const postsSlice = createSlice({
         builder.addCase(fetchPostsForSubreddit.pending, (state, action) => {
             state.status = "loading";
             state.error = null;
-            state.currentSubreddit = action.meta.org;
+            state.currentSubreddit = action.meta.arg;
         });
         /* Triggered when thunk finishes successfully and returns `posts` */
         builder.addCase(fetchPostsForSubreddit.fulfilled, (state, action) => {
