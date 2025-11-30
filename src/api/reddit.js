@@ -35,9 +35,10 @@ export async function fetchSubredditPosts(subreddit) {
 }
 
 /* This function mirrors `fetchSubredditPosts()`: URL > fetch > check > json > map */
-export async function fetchCommentsForPost(postId) {
-  /* Build URL like: https://api.reddit.com/comments/<postId>.json */
-  const url = `${BASE_PATH}/comments/${postId}.json`;
+export async function fetchCommentsForPost(permalink) {
+  /* Example: permalink = "/r/news/comments/abc123/some_title/
+     This becomes "/r/news/comments/abc123/some_title/.json */
+  const url = `${BASE_PATH}${permalink}.json`;
   /* Call the API */
   const response = await fetch(url);
   /* If the response is not OK (status 200-299), throw an error */
