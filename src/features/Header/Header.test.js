@@ -25,12 +25,11 @@ describe("Header", () => {
 
         render(<Header onSearch={handleSearch}/>);
 
-        const input = screen.getByPlaceholderText("");
-        fireEvent.change(input, { target: { value: " python " } });
+        const input = screen.getByPlaceholderText("Search Reddit...");
+        fireEvent.change(input, { target: { value: "   " } });
         const button = screen.getByRole("button", { name: /search/i });
         fireEvent.click(button);
 
-        expect(handleSearch).toHaveBeenCalledTimes(1);
         expect(handleSearch).not.toHaveBeenCalled();
     });
 });
