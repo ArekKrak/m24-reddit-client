@@ -4,7 +4,8 @@ import { fetchSubredditPosts } from "../../api/reddit";
 const initialState = {
     items: [],  // array of post objects
     status: "idle", // "idle", "loading", "succeeded", "failed"
-    error: null     // error message or null
+    error: null,     // error message or null
+    currentSubreddit: null
 };
 /* A thunk to postsSlice */
 export const fetchPostsForSubreddit = createAsyncThunk(
