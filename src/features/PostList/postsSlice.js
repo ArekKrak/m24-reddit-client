@@ -5,7 +5,10 @@ const initialState = {
 	items: [],  // array of post objects
 	status: "idle", // "idle", "loading", "succeeded", "failed"
 	error: null,     // error message or null
-	currentSubreddit: null
+	currentSubreddit: null,
+	comments: [], 	// comments for the selected post
+	commentsStatus: "idle", // "idle", "loading", "succeeded", "failed"
+	commentsError: null 	// error message for comments
 };
 /* A thunk to postsSlice */
 export const fetchPostsForSubreddit = createAsyncThunk(
