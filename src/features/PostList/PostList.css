@@ -1,4 +1,4 @@
 .postlist-style {
-    flex: 1;
+    flex: 1 1 auto;
     padding: 10px;
 }
