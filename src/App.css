@@ -50,8 +50,11 @@
 
 .layout {
   display: flex;
-  gap: 5px;
-  margin: 10px;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 1200px;
 }
 
 .retry-button {
