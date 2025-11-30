@@ -49,7 +49,7 @@ export default function PostDetailModal({ post, onClose }) {
 						</ul>
 					)}
 				</div>
-				<button type="button" onClick={onClose}>
+				<button className="comment-button" type="button" onClick={onClose}>
 					Close
 				</button>
 			</div>
