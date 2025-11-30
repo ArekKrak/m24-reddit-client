@@ -8,9 +8,10 @@ import Header from "./Header";
 describe("Header", () => {
     
     it("renders the `onSearch` calls with trimmed text", () => {
+        const handleSearch = jest.fn();
+
         render(<Header onSearch={handleSearch}/>);
 
-        const handleSearch = jest.fn();
         const input = screen.getByPlaceholderText("Search Reddit...");
         fireEvent.change(input, { target: { value: " python " } });
         const button = screen.getByRole("button", { name: /search/i });
