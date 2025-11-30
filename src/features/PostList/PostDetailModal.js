@@ -25,6 +25,28 @@ export default function PostDetailModal({ post, onClose }) {
 				<footer>
 					{post.score} upvotes • {post.noOfComments} comments
 				</footer>
+				{/* Comments section */}
+				<div>
+					<h4>Comments</h4>
+					{/* Loading state */}
+					{commentsStatus === "loading" && <p>Loading comments...</p>}
+					{/* Error state */}
+					{commentsStatus === "failed" && <p>Couldn&apos;t load comments: {commentsError}</p>}
+					{/* Loaded but empty */}
+					{commentsStatus === "succeeded" && comments.length === 0 && (<p>No comments to display.</p>)}
+					{/* Loaded with some comments */}
+					{commentsStatus === "succeeded" && comments.length > 0 && (
+						<ul>
+							{comments.map((comment) => (
+								<li key={comment.id}>
+									{/* the text of the body */}
+									<p>{comment.body}</p>
+									<small>u/{comment.author}</small>
+								</li>
+							))}
+						</ul>
+					)}
+				</div>
 				<button type="button" onClick={onClose}>
 					Close
 				</button>
