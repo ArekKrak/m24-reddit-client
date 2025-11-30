@@ -81,7 +81,7 @@ function App() {
         <div className='error-banner'>
           <p>
             {isRateLimitError 
-              ? "Reddit is rate limiting us right now (429). Please wait a moment an try again."
+              ? "Reddit is rate limiting us right now (429). Please wait a moment and try again."
               : <>Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.</>
             }
           </p>
