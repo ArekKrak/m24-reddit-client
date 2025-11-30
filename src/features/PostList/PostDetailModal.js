@@ -40,8 +40,8 @@ export default function PostDetailModal({ post, onClose }) {
 						<ul>
 							{comments.map((comment) => (
 								<li key={comment.id}>
-									{/* the text of the body */}
-									<p>{comment.body}</p>
+									{/* Render the comment body as Markdown */}
+									<ReactMarkdown>{comment.body}</ReactMarkdown>
 									<small>u/{comment.author}</small>
 								</li>
 							))}
