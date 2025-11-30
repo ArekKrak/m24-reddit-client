@@ -36,6 +36,12 @@
     font-size: 0.9rem;
 }
 
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1rem 1.25rem;
+    }
+}
+
 /* Simple keyframes for animations */
 @keyframes backdrop-fade-in {
     from { opacity: 0; }
