@@ -2,6 +2,7 @@ import React, { useEffect } from "react";	// `useEffect` to run the code when th
 import { useDispatch, useSelector } from "react-redux";		// `useDispatch` to dispatch the comments thunk and `useSelector` to read comments state from Redux
 import { fetchCommentsForPostThunk } from "./postsSlice";
 import ReactMarkdown from "react-markdown";
+import './PostDetailModal.css';
 
 export default function PostDetailModal({ post, onClose }) {
 	/* Trigger the thunk */
