@@ -76,7 +76,12 @@ function App() {
   return (
     <div className="App">
       <Header onSearch={handleSearch} />
-      {isLoading && <p>Loading posts from Reddit...</p>}
+      {isLoading && (
+        <div className='loading-indicator'>
+          <div className='loading-spinner'/>
+          <span>Loading posts from Reddit...</span>
+        </div>
+      )}
       {error && (
         <div className='error-banner'>
           <p>
