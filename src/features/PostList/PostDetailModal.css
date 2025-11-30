@@ -27,3 +27,11 @@
     margin: 0 auto;
     width: 6rem;
 }
+
+.comments-section {
+    border-top: 1px solid #ddd;
+    padding-top: 0.75rem;
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+}
