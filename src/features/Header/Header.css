@@ -1,8 +1,28 @@
 .header-style {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #092C8A;
-    color: #FFFFFF;
-    padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #092C8A;
+	color: #FFFFFF;
+	padding: 10px;
 }
+
+.header-button {
+	padding: 0.45rem 0.9rem;
+	border-radius: var(--radius-md);
+	border: none;
+	background-color: var(--color-accent);
+	color: #000;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color var(--transition-fast),
+		transform var(--transition-fast),
+		box-shadow var(--transition-fast);
+	}
+
+	.header-button:hover {
+		background-color: #FFD94D;
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-soft);
+	}
