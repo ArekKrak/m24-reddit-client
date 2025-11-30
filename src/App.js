@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchPostsForSubreddit } from './features/PostList/postsSlice';
 import './App.css';
@@ -51,6 +51,7 @@ function App() {
   const isLoading = status === "loading";
   /* If live Reddit is down, show demo data instead of a blank screen - a nice fallback behaviour */
   const postsToShow = error && posts.length === 0 ? MOCK_POSTS : posts;
+  const [selectedPost, setSelectedPost] = useState(null);
 
   /* Below is the part that conencts the app to Reddit.
   vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv */
@@ -69,6 +70,14 @@ function App() {
   function handleRetry() {
     const target = currentSubreddit || "news";
     dispatch(fetchPostsForSubreddit(target));
+  }
+  /* User chose this post, remember it */
+  function handlePostSelect(post) {
+    setSelectedPost(post);
+  }
+  /* User closed the detail view, forget it */
+  function handleClosePost(post) {
+    setSelectedPost(null);
   }
 
   const isRateLimitError = error && error.includes("429");
