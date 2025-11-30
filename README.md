@@ -44,3 +44,6 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## IMPORTANT
+This app uses Reddit’s undocumented JSON API. In some environments Reddit currently returns HTML instead of JSON, which surfaces as a parse error and triggers the app’s mock-data fallback. On environments where the JSON API responds correctly, the app displays live posts and comments.
