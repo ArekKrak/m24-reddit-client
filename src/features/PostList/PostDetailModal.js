@@ -28,7 +28,7 @@ export default function PostDetailModal({ post, onClose }) {
 					{post.score} upvotes • {post.noOfComments} comments
 				</footer>
 				{/* Comments section */}
-				<div>
+				<div className="comments-section">
 					<h4>Comments</h4>
 					{/* Loading state */}
 					{commentsStatus === "loading" && <p>Loading comments...</p>}
