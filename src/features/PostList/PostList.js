@@ -2,7 +2,7 @@
 import './PostList.css';
 import PostCard from "./PostCard";
 
-export default function PostList({ posts, onPostSelect }) {
+export default function PostList({ posts }) {
 
 	return (
 		<section className="postlist-style">
@@ -10,7 +10,6 @@ export default function PostList({ posts, onPostSelect }) {
 				<PostCard 
 					key={post.id} 
 					post={post}
-					onSelect={() => onPostSelect && onPostSelect(post)} /* The guard `onPostSelect && ...` means that the component doesn't crash if no callback is given */
 				/>
 			))}
 		</section>
