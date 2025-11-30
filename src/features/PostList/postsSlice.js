@@ -36,9 +36,10 @@ const postsSlice = createSlice({
     },
     extraReducers: (builder) => {
         /* Triggered when the thunk is dispatched and it has just started */
-        builder.addCase(fetchPostsForSubreddit.pending, (state) => {
+        builder.addCase(fetchPostsForSubreddit.pending, (state, action) => {
             state.status = "loading";
             state.error = null;
+            state.currentSubreddit = action.meta.org;
         });
         /* Triggered when thunk finishes successfully and returns `posts` */
         builder.addCase(fetchPostsForSubreddit.fulfilled, (state, action) => {
