@@ -5,6 +5,7 @@
 
 @media (max-width: 768px) {
     .postlist-style {
+        margin: 0 auto;
         order: 2;
     }
 }

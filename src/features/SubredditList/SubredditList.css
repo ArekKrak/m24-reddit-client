@@ -39,6 +39,7 @@
 @media (max-width: 768px) {
 	.sidebar-aside {
 		width: 100%;
+		margin: 0 auto;
 		order: 1; 
 	}
 }
