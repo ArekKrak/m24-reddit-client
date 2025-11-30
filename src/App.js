@@ -61,10 +61,14 @@ function App() {
   function handleSubredditClick(name) {
     dispatch(fetchPostsForSubreddit(name));
   }
+  /* Dispatch the thunk */
+  function handleSearch(term) {
+    dispatch(fetchPostsForSubreddit(term));
+  }
 
   return (
     <div className="App">
-      <Header />
+      <Header onSearch={handleSearch} />
       {isLoading && <p>Loading posts from Reddit...</p>}
       {error && (
         <p className='error-banner'>
