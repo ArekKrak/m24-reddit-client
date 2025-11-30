@@ -71,6 +71,8 @@ function App() {
     dispatch(fetchPostsForSubreddit(target));
   }
 
+  const isRateLimitError = error && error.includes("429");
+
   return (
     <div className="App">
       <Header onSearch={handleSearch} />
@@ -78,7 +80,10 @@ function App() {
       {error && (
         <div className='error-banner'>
           <p>
-            Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.
+            {isRateLimitError 
+              ? "Reddit is rate limiting us right now (429). Please wait a moment an try again."
+              : <>Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.</>
+            }
           </p>
           <button type='button' onClick={handleRetry}>
             Retry
