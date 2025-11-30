@@ -66,15 +66,24 @@ function App() {
   function handleSearch(term) {
     dispatch(fetchPostsForSubreddit(term));
   }
+  function handleRetry() {
+    const target = currentSubreddit || "news";
+    dispatch(fetchPostsForSubreddit(target));
+  }
 
   return (
     <div className="App">
       <Header onSearch={handleSearch} />
       {isLoading && <p>Loading posts from Reddit...</p>}
       {error && (
-        <p className='error-banner'>
-          Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.
-        </p>
+        <div className='error-banner'>
+          <p>
+            Couldn&apos;t load fresh data from Reddit ({error}). Showing cached example posts instead.
+          </p>
+          <button type='button' onClick={handleRetry}>
+            Retry
+          </button>
+        </div>
       )}
       <main className='layout'>
         <SubredditList subreddits={MOCK_SUBREDDITS} onSelectSubreddit={handleSubredditClick} />
