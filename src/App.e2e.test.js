@@ -6,6 +6,12 @@ import App from "./App.js"
 /* Import the same module postsSlice uses */
 import * as redditApi from "./api/reddit.js";
 
+/* Stub react-markdown to a simple pass-through component */
+jest.mock("react-markdown", () => ({
+	__esModule: true,
+	default: (props) => props.children
+}));
+
 /* Tell Jest to mock that module */
 jest.mock("./api/reddit.js");
 
