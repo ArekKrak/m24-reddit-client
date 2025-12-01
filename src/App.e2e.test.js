@@ -63,7 +63,7 @@ test("user can load posts, search, and open a post detail with comments", async 
 	);
 
 	/* 1. Initial load shows the 'news' post */
-	expect(await screen.findByText("News post")).toBeInTheDocument();
+	expect(await screen.findByText("Long post")).toBeInTheDocument();
 
 	/* 2. Search for "reactjs" */
 	const input = screen.getByPlaceholderText(/search reddit/i);
