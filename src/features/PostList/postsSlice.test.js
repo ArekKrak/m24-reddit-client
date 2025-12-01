@@ -10,7 +10,10 @@ describe("postsSlice", () => {
             items: [],
             status: "idle",
             error: null,
-            currentSubreddit: null
+            currentSubreddit: null,
+            comments: [],
+            commentsStatus: "idle",
+            commentsError: null
         });
     });
     /* Given some previous state and an array of posts, `setPosts` should replace `items` with that array */
