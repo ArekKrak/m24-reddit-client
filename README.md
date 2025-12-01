@@ -45,5 +45,19 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+---
+
+### Performance & quality
+
+- Automated tests:
+  - Unit tests for core reducers and UI components (`postsSlice`, Header, Post cards/list, subreddit sidebar).
+  - One end-to-end test (`App.e2e.test.js`) covering the main user journey: load → search → open a post → view comments.
+
+- Lighthouse (Chrome DevTools, local build):
+  - **Mobile:** Performance ~75, Accessibility 100, Best Practices 100, SEO 100.
+  - **Desktop:** Performance 99, Accessibility 100, Best Practices 100, SEO 100.
+
+These scores confirm that the app is fast, accessible, and follows modern web best practices on both mobile and desktop.
+
 ## IMPORTANT
 This app uses Reddit’s undocumented JSON API. In some environments Reddit currently returns HTML instead of JSON, which surfaces as a parse error and triggers the app’s mock-data fallback. On environments where the JSON API responds correctly, the app displays live posts and comments.
