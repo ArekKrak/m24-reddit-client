@@ -47,6 +47,12 @@ test("user can load posts, search, and open a post detail with comments", async 
 		{ id: "c1", body: "Long post", author: "john_doe" }
 	];
 
+	redditApi.fetchSubredditPosts.mockImplementation(async (subreddit) => {
+		if (subreddit === "news") return newPosts;
+		if (subreddit === "reactjs") return reactPosts;
+		return [];
+	});
+
 	redditApi.fetchCommentsForPost.mockResolvedValue(mockComments);
 
 	/* Render the real app with the real store */
