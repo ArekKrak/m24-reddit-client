@@ -44,7 +44,7 @@ test("user can load posts, search, and open a post detail with comments", async 
 
 	/* Fake comments returned for the detail modal */
 	const mockComments = [
-		{ id: "c1", body: "Long post", author: "john_doe" }
+		{ id: "c1", body: "News post", author: "john_doe" }
 	];
 
 	redditApi.fetchSubredditPosts.mockImplementation(async (subreddit) => {
@@ -63,7 +63,7 @@ test("user can load posts, search, and open a post detail with comments", async 
 	);
 
 	/* 1. Initial load shows the 'news' post */
-	expect(await screen.findByText("Long post")).toBeInTheDocument();
+	expect(await screen.findByText("News post")).toBeInTheDocument();
 
 	/* 2. Search for "reactjs" */
 	const input = screen.getByPlaceholderText(/search reddit/i);
