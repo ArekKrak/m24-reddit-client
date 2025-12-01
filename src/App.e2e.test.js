@@ -42,4 +42,31 @@ test("user can load posts, search, and open a post detail with comments", async 
 	];
 
 	redditApi.fetchCommentsForPost.mockResolvedValue(mockComments);
+
+	/* Render the real app with the real store */
+	render(
+		<Provider store={store}>
+			<App />
+		</Provider>
+	);
+
+	/* 1. Initial load shows the 'news' post */
+	expect(await screen.findByText("News post")).toBeInTheDocument();
+
+	/* 2. Search for "reactjs" */
+	const input = screen.getByPlaceholderText(/search reddit/i);
+	fireEvent.change(input, { target: { value: "reactjs" } });
+
+	const searchButton = screen.getByRole("button", { name: /search/i });
+	fireEvent.click(searchButton);
+
+	/* React post appears */
+	expect(await screen.findByText("React post")).toBeInTheDocument();
+
+	/* 3. User clicks the post to open the modal */
+	fireEvent.click(screen.getByText("React post"));
+
+	/* Modal shows comments header and the mocked comment text */
+	expect(await screen.findByText(/comments/i)).toBeInTheDocument();
+	expect(await screen.findByText("Nice post")).toBeInTheDocument();
 });
