@@ -1,63 +1,164 @@
-# Getting Started with Create React App and Redux
+# Reddit Light — Minimal Reddit Client (React + Redux)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+![HTML5](https://img.shields.io/badge/HTML5-Markup-fff?logo=html5&logoColor=E34F26&style=flat)
+![CSS3](https://img.shields.io/badge/CSS3-Styling-fff?logo=css3&logoColor=1572B6&style=flat)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript&logoColor=black&style=flat)
+![React](https://img.shields.io/badge/React-18%20%2B%20Hooks-61DAFB?logo=react&logoColor=black&style=flat)
+![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-State-764ABC?logo=redux&logoColor=white&style=flat)
+![CRA](https://img.shields.io/badge/Create%20React%20App-React--Scripts%205-09D3AC?logo=create-react-app&logoColor=white&style=flat)
+![Jest](https://img.shields.io/badge/Jest-Testing-C21325?logo=jest&logoColor=white&style=flat)
+![RTL](https://img.shields.io/badge/React%20Testing%20Library-Unit%20%2B%20E2E-E33332?style=flat)
+![ReactMarkdown](https://img.shields.io/badge/React--Markdown-Comments-000000?style=flat)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white&style=flat)](https://github.com/ArekKrak/jammming)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/63652daf-024a-4abd-8982-7f4089b0d695/deploy-status)](https://app.netlify.com/projects/jammming-wapp/deploys)
 
-## Available Scripts
+This app was built as part of the Codecademy *Front-End Web Development* path (**Reddit Client** project).  
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Course Brief (summary):**  
+Build a small Reddit Client in React, backed by Redux Toolkit, that lets users browse posts from a few subreddits, search, and view a post's comments in a simple modal.
 
 ---
 
-### Performance & quality
+## Overview
 
-- Automated tests:
-  - Unit tests for core reducers and UI components (`postsSlice`, Header, Post cards/list, subreddit sidebar).
-  - One end-to-end test (`App.e2e.test.js`) covering the main user journey: load → search → open a post → view comments.
+**Reddit Light** is a minimal Reddit reader focused on clarity and responsiveness:
 
-- Lighthouse (Chrome DevTools, local build):
-  - **Mobile:** Performance ~75, Accessibility 100, Best Practices 100, SEO 100.
-  - **Desktop:** Performance 99, Accessibility 100, Best Practices 100, SEO 100.
+- Load posts from a chosen subreddit
+- Filter them with a keyword search
+- Open an individual post in a modal and read its comments
 
-These scores confirm that the app is fast, accessible, and follows modern web best practices on both mobile and desktop.
+The app talks to the public `https://api.reddit.com` endpoints, is wired through Redux Toolkit thunks, and comes with unit tests, one end-to-end test, and Lighthouse audits for both mobile and desktop.
 
-## IMPORTANT
-This app uses Reddit’s undocumented JSON API. In some environments Reddit currently returns HTML instead of JSON, which surfaces as a parse error and triggers the app’s mock-data fallback. On environments where the JSON API responds correctly, the app displays live posts and comments.
+   **Status:** Core project requirements implemented (subreddit list, search, comments modal, tests, Lighthouse check).
+
+---
+
+## Features
+
+- **Subreddit sidebar** 
+    - Fixed list of starter subreddits (`news`, `python`, `javascript`, `reactjs`).
+    - Clicking a name loads fresh posts for that subreddit via the Reddit API.
+- **Post feed** 
+    - Clean card layout: **subreddit + author**, **title**, and **score/comments count**.
+    - Cards are sized to work on both desktop and mobile.
+- **Search bar** 
+    - Search **within the currently selected subreddit**.
+    - Ignores empty/whitespace-only queries to avoid useless requests.
+- **Post detail modal with comments** 
+    - Clicking a post opens a centered modal showing:
+        - Title, subreddit, author
+        - Upvotes and comment count
+        - **Comments rendered as Markdown** (via `react-markdown`)
+    - Overlay backdrop prevents interaction with the page underneath.
+- **Error handling & fallback data** 
+    - If `api.reddit.com` responds with a **403** or returns HTML instead of JSON, the app:
+        - Surfaces a red error banner at the top (“Couldn’t load fresh data from Reddit…”)
+        - Falls back to a small **cached example dataset** so the UI still demonstrates the full view
+    - Comments have their own loading/error states inside the modal.
+- **Responsive layout**
+    - Desktop: sidebar on the left, posts in a main column.
+    - Mobile: stacked layout - header, error banner (if any), sidebar, then posts.
+
+---
+
+## Tech Stack (TO BE CONTINUED HERE)
+
+- **React (Vite)** — fast dev server + HMR.
+- **JavaScript (ES202x)** — functional React with hooks.
+- **Spotify Web API** — search, create playlist, add tracks.
+- **PKCE OAuth** — secure client-side auth (no secret).
+- **ESLint** — basic linting.
+
+---
+
+## Screens / Flow
+
+- **Connect Spotify** — login/consent with PKCE.
+- **Search** — results list with "+".
+- **Playlist** — chosen songs with "-" and editable name.
+- **Save to Spotify** — success alert with playlist URL; UI resets.
+
+---
+
+## Project Structure
+
+```
+jammming/
+├── docs/                                    # Design docs and ADRs
+│   ├── DESIGN_EXCLUDE_PLAYLIST_ITEMS.md        # Part 2 feature design
+│   ├── README.md                               # Project documentation
+│   └── TESTING.md                              # Manual testing & debugging log
+├── public/                                  # Static assets served as-is
+│   ├── _redirects                              # SPA fallback for Netlify
+│   └── vite.svg                                # Favicon
+├── src/                                     # Application source
+│   ├── assets/                                 # Static assets
+│   ├── components/                             # UI components
+│   │   ├── App/{.jsx, .css}                       # App state wiring
+│   │   ├── SearchBar/{.jsx, .css}                 # Controlled input; "Searching..."
+│   │   ├── SearchResults/{.jsx, .css}             # Results with "+"
+│   │   ├── TrackList/{.jsx, .css}                 # Maps tracks → <Track/>
+│   │   ├── Track/{.jsx, .css}                     # Row with + / -
+│   │   └── Playlist/{.jsx, .css}                  # Name, list, "Saving..."
+│   ├── services/                               # API/auth logic
+│   │   ├── playlist.js                            # savePlaylistToSpotify(...)
+│   │   ├── search.js                              # searchTracks(query)
+│   │   └── spotifyAuth.js                         # PKCE + spotifyFetch wrapper
+│   ├── index.css                               # Global app styles
+│   └── main.jsx                                # React root render
+├── .gitignore                               # Ignore node_modules, .env, build output
+├── index.html                               # Vite entry HTML (mount point for React)
+├── package-lock.json                        # NPM lockfile (commit this)
+├── package.json                             # Project metadata, scripts, dependencies
+└── vite.config.js                           # Vite config
+```
+
+---
+
+## Live Site
+
+**[View the Live Project](https://jammming-wapp.netlify.app/)**
+
+---
+
+## Testing & Debugging
+
+- Manual checklist in **`TESTING.md`** (Search, Add/Remove/Dedup, Save Flow, Auth & Errors).
+- **Chrome DevTools** (Network/Offline, Slow 3G) & **React DevTools** for state inspection.
+
+See detailed notes in [TESTING.md](./TESTING.md).
+
+---
+
+## Design Docs
+
+- Part 2: **Exclude Playlist Items from Search Results** — reasoning, tiny diffs, caveats.
+
+---
+
+## Limitations
+
+ - Some API responses are cached (DevTools may show `304` revalidation).
+ - Spotify rate limits (429) are rare on dev clients; UI surfaces a friendly error if they occur.
+ - Different releases of ”the same song” have different IDs and are treated as distinct — by design.
+
+---
+
+## Future Improvements
+
+- Private playlist support (`playlist-modify-private`) + toggle.
+- Debounced search-on-typing with minimal requests.
+- Toast notifications instead of alerts.
+- Persist in-progress playlist to `sessionStorage`.
+
+---
+
+## Contact
+If you're a recruiter, mentor, or fellow developer interested in collaboration or feedback:
+
+**Arek Krakowiak**  
+[369arek12@protonmail.com](mailto:369arek12@protonmail.com)
+
+---
+
+Thank you for viewing this project!
