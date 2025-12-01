@@ -79,6 +79,6 @@ test("user can load posts, search, and open a post detail with comments", async 
 	fireEvent.click(screen.getByText("React post"));
 
 	/* Modal shows comments header and the mocked comment text */
-	expect(await screen.findByText("heading", { name: /comments/i })).toBeInTheDocument();
+	expect(await screen.findByRole("heading", { name: /comments/i })).toBeInTheDocument();
 	expect(await screen.findByText("News post")).toBeInTheDocument();
 });
