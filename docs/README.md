@@ -9,7 +9,7 @@
 ![Jest](https://img.shields.io/badge/Jest-Testing-C21325?logo=jest&logoColor=white&style=flat)
 ![RTL](https://img.shields.io/badge/React%20Testing%20Library-Unit%20%2B%20E2E-E33332?style=flat)
 ![ReactMarkdown](https://img.shields.io/badge/React--Markdown-Comments-000000?style=flat)
-[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white&style=flat)](https://github.com/ArekKrak/jammming)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white&style=flat)](https://github.com/ArekKrak/m24-reddit-client)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/63652daf-024a-4abd-8982-7f4089b0d695/deploy-status)](https://app.netlify.com/projects/jammming-wapp/deploys)
 
 This app was built as part of the Codecademy *Front-End Web Development* path (**Reddit Client** project).  
@@ -97,49 +97,81 @@ The app talks to the public `https://api.reddit.com` endpoints, is wired through
 
 ```
 m24-reddit-client/
-├── docs/                                    # Design docs
+├── docs/
 │   ├── project-plan.md                         # Part plan
 │   └── README.md                               # Project documentation
-├── public/                                  # Static assets served as-is
+├── public/
 │   ├── index.html                              # CRA entry HTML
-│   ├── manifest.json                           # 
+│   ├── manifest.json                           # Web app manifest: icons, theme, display/start URL
 │   └── favicon.ico                             # icons...
-├── src/                                     # Application source
-│   ├── api/                                 # Static assets
-│   ├── components/                             # UI components
-│   │   ├── App/{.jsx, .css}                       # App state wiring
-│   │   ├── SearchBar/{.jsx, .css}                 # Controlled input; "Searching..."
-│   │   ├── SearchResults/{.jsx, .csss}             # Results with "+"
-│   │   ├── TrackList/{.jsx, .css}                 # Maps tracks → <Track/>
-│   │   ├── Track/{.jsx, .css}                     # Row with + / -
-│   │   └── Playlist/{.jsx, .css}                  # Name, list, "Saving..."
-│   ├── services/                               # API/auth logic
-│   │   ├── playlist.js                            # savePlaylistToSpotify(...)
-│   │   ├── search.js                              # searchTracks(query)
-│   │   └── spotifyAuth.js                         # PKCE + spotifyFetch wrapper
-│   ├── index.css                               # Global app styles
-│   └── main.jsx                                # React root render
-├── .gitignore                               # Ignore node_modules, .env, build output
-├── index.html                               # Vite entry HTML (mount point for React)
-├── package-lock.json                        # NPM lockfile (commit this)
-├── package.json                             # Project metadata, scripts, dependencies
-└── vite.config.js                           # Vite config
+├── src/
+│   ├── api/
+│   │   ├── reddit.js                           # fetchSubredditPosts + fetchCommentsForPost
+│   │   └── reddit.test.js                      # Testing suite
+│   ├── app/                                 
+│   │   └── store.js                            # Redux store configuration (registers the `posts` slice)
+│   ├── components/
+│   │   ├── Header/
+│   │   │   ├── Header.js                       # Header with app title and controlled search input
+│   │   │   ├── Header.css                      # Layout + responsive styles for the header/search bar
+│   │   │   └── Header.test.js                  # Tests for trimming input and ignoring blank searches
+│   │   ├── PostList/
+│   │   │   ├── PostList.js                     # Renders a list of PostCard components
+│   │   │   ├── PostList.css                    # Layout styles for the posts column
+│   │   │   ├── PostList.test.js                # Tests that it renders cards / handles empty list
+│   │   │   ├── PostCard.js                     # Single post card (subreddit, author, title, stats)
+│   │   │   ├── PostCard.css                    # Card styling + hover animation
+│   │   │   ├── PostCard.test.css               # Tests for the card's text and heading structure
+│   │   │   ├── PostDetailModal.js              # Modal for a selected post (details + comments)
+│   │   │   ├── PostDetailModal.css             # Modal layout, backdrop, animations, scroll area
+│   │   │   ├── postsSlice.js                   # Redux slice + thunks for posts and comments
+│   │   │   └── postsSlice.test.js              # Tests for slice reducers and thunk lifecycle
+│   │   └── SubredditList/
+│   │       ├── SubredditList.js                # Sidebar listing starter subreddits
+│   │       ├── SubredditList.css               # Sidebar card styling + hover effects
+│   │       └── SubredditList.test.js           # Tests that it renders "Subreddits" and r/name items
+│   ├── App.js                  # Top-level layout: header, sidebar, posts, modal logic
+│   ├── services/               # Global layout pieces (grid, error banner, spinner, buttons)
+│   ├── services/               # React entry point; creates root and wraps App in <Provider>
+│   ├── services/               # Global typography, colours, and CSS variables
+│   ├── services/               # Integration-style test for load > search > open modal > comments
+│   └── main.jsx                # Jest / RTL setup (adds custom matchers from @testing-library/jest-dom)
+├── package.json                               # Project metadata, CRA scripts, dependencies
+└── package-lock.json                        # Exact dependency versions for reproducible installs
 ```
 
 ---
 
 ## Live Site
 
-**[View the Live Project](https://jammming-wapp.netlify.app/)**
+**[View the Live Project](*Coming soon*)**
 
 ---
 
-## Testing & Debugging
+## Testing & Quality
 
-- Manual checklist in **`TESTING.md`** (Search, Add/Remove/Dedup, Save Flow, Auth & Errors).
-- **Chrome DevTools** (Network/Offline, Slow 3G) & **React DevTools** for state inspection.
-
-See detailed notes in [TESTING.md](./TESTING.md).
+### Unit / integration tests
+All tests are written with **Jest** and **React Testing Libray**.
+- **API layer**
+    - `reddit.test.js`
+        - Verifies that fetchSubredditPosts:
+            - Hits the correct URL for a given subreddit.
+            - Maps Reddit's `children[].data` shape to a flat array of post objects.
+            - Throws a helpful error when the HTTP status isn't OK.
+- **Components**
+    - `Header.test.js`
+        - Calls `onSearch` with **trimmed text**.
+        - Does not call `onSearch` for empty / whitespace-only input
+    - `PostCard.test.js`
+        - Renders subreddit + author line, title in an `<h3>`, and the footer "X upvotes • Y comments".
+    - `PostList.test.js`
+        - Renders one `PostCard` per post in the array.
+        - Renders nothing when `posts` is empty.
+    - `SubredditList.test.js`
+        - Renders "Subreddits" heading.
+        - Lists each subreddit as `r/name`.
+- **Redux slice**
+    - **TO_BE_CONTINUED(JS 10 reddit)**
 
 ---
 
