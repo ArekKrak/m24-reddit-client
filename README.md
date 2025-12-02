@@ -96,7 +96,7 @@ The app talks to the public `https://api.reddit.com` endpoints, is wired through
 ## Project Structure
 
 ```
-jammming/
+m24-reddit-client/
 ├── docs/                                    # Design docs and ADRs
 │   ├── DESIGN_EXCLUDE_PLAYLIST_ITEMS.md        # Part 2 feature design
 │   ├── README.md                               # Project documentation
