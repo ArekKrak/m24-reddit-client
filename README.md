@@ -49,7 +49,7 @@ The app talks to the public `https://api.reddit.com` endpoints, is wired through
         - Title, subreddit, author
         - Upvotes and comment count
         - **Comments rendered as Markdown** (via `react-markdown`)
-    - Overlay backdrop prevents interaction with the page underneath.
+    - Overlay backdrop prevents interaction with the page underneath. `Esc` and **Close** button dismiss the modal.
 - **Error handling & fallback data** 
     - If `api.reddit.com` responds with a **403** or returns HTML instead of JSON, the app:
         - Surfaces a red error banner at the top (“Couldn’t load fresh data from Reddit…”)
@@ -61,22 +61,35 @@ The app talks to the public `https://api.reddit.com` endpoints, is wired through
 
 ---
 
-## Tech Stack (TO BE CONTINUED HERE)
+## Tech Stack
 
-- **React (Vite)** — fast dev server + HMR.
-- **JavaScript (ES202x)** — functional React with hooks.
-- **Spotify Web API** — search, create playlist, add tracks.
-- **PKCE OAuth** — secure client-side auth (no secret).
-- **ESLint** — basic linting.
+- **React (Create React App)** — component model and JSX.
+- **Redux Toolkit** — `createSlice` + `createAsyncThunk` for posts and comments.
+- **JavaScript (ES202x)** — functional components and hooks.
+- **Reddit public API** — `https://api.reddit.com/r/{subreddit}.json` for posts, `{permalink}.json` for comments.
+- **React Markdown** — lightweight rendering of comment bodies.
+- **Jest + React Testing Library** — unit tests and a simple end-to-end app flow.
+- **CSS** — custom styles with CSS variables for colors, spacing, and radii.
 
 ---
 
 ## Screens / Flow
 
-- **Connect Spotify** — login/consent with PKCE.
-- **Search** — results list with "+".
-- **Playlist** — chosen songs with "-" and editable name.
-- **Save to Spotify** — success alert with playlist URL; UI resets.
+- **Subreddit browsing** 
+    - Choose a subreddit from the left sidebar.
+    - The main feed updates with fresh posts for that subreddit.
+- **Searching**
+    - Type a keyword into **Search Reddit...** and press **Search**.
+    - The post list filters to titles containing the query (case-insensitive).
+- **Opening a post**
+    - Click on a post card to open the **Post Detail Modal**.
+    - The app fetches comments using the post's `permalink`.
+    - Comments appear as a list underneath a "Comments" heading.
+- **Error scenarios**
+    - If posts fail to load (e.g. `403 Blocked` or HTML instead of JSON), the app shows:
+        - a banner explaining that fresh data couldn't be loaded.
+        - The "cached example posts" so the UI remains usable.
+    - If comments fail, the modal shows a friendly error message instead of crashing.
 
 ---
 
