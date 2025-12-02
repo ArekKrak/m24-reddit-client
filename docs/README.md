@@ -97,19 +97,19 @@ The app talks to the public `https://api.reddit.com` endpoints, is wired through
 
 ```
 m24-reddit-client/
-├── docs/                                    # Design docs and ADRs
-│   ├── DESIGN_EXCLUDE_PLAYLIST_ITEMS.md        # Part 2 feature design
-│   ├── README.md                               # Project documentation
-│   └── TESTING.md                              # Manual testing & debugging log
+├── docs/                                    # Design docs
+│   ├── project-plan.md                         # Part plan
+│   └── README.md                               # Project documentation
 ├── public/                                  # Static assets served as-is
-│   ├── _redirects                              # SPA fallback for Netlify
-│   └── vite.svg                                # Favicon
+│   ├── index.html                              # CRA entry HTML
+│   ├── manifest.json                           # 
+│   └── favicon.ico                             # icons...
 ├── src/                                     # Application source
-│   ├── assets/                                 # Static assets
+│   ├── api/                                 # Static assets
 │   ├── components/                             # UI components
 │   │   ├── App/{.jsx, .css}                       # App state wiring
 │   │   ├── SearchBar/{.jsx, .css}                 # Controlled input; "Searching..."
-│   │   ├── SearchResults/{.jsx, .css}             # Results with "+"
+│   │   ├── SearchResults/{.jsx, .csss}             # Results with "+"
 │   │   ├── TrackList/{.jsx, .css}                 # Maps tracks → <Track/>
 │   │   ├── Track/{.jsx, .css}                     # Row with + / -
 │   │   └── Playlist/{.jsx, .css}                  # Name, list, "Saving..."
