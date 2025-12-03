@@ -169,7 +169,7 @@ m24-reddit-client/
 
 ## Live Site
 
-**[View the Live Project](*Coming soon*)**
+**[View the Live Project](https://reddit-light.netlify.app/)**
 
 ---
 
