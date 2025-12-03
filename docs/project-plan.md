@@ -4,7 +4,7 @@ Build a responsive Reddit client using React and Redux that lets users browse po
 
 ## TECH STACK - WHAT IT'S BUILT WITH
 
-- Frontend: React (CRA), React Router (for detail view), CSS (plain, modules, maybe a small utility library later).
+- Frontend: React (CRA), modal, CSS (plain, modules, maybe a small utility library later).
 - State management: Redux Toolkit + React-Redux.
 - API layer: Reddit JSON API via a small wrapper (src/api/reddit.js).
 - Markdown: a React Markdown renderer (e.g. react-markdown) later on.
