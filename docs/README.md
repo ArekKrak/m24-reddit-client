@@ -10,7 +10,7 @@
 ![RTL](https://img.shields.io/badge/React%20Testing%20Library-Unit%20%2B%20E2E-E33332?style=flat)
 ![ReactMarkdown](https://img.shields.io/badge/React--Markdown-Comments-000000?style=flat)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white&style=flat)](https://github.com/ArekKrak/m24-reddit-client)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/63652daf-024a-4abd-8982-7f4089b0d695/deploy-status)](https://app.netlify.com/projects)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/63652daf-024a-4abd-8982-7f4089b0d695/deploy-status)](https://app.netlify.com/projects/reddit-light/deploys)
 
 This app was built as part of the Codecademy *Front-End Web Development* path (**Reddit Client** project).  
 
