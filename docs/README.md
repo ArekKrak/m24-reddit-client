@@ -121,7 +121,7 @@ The initial layout was sketched as:
 ```
 m24-reddit-client/
 ├── docs/
-│   ├── project-plan.md                         # Part plan
+│   ├── project-plan.md                         # Project plan
 │   └── README.md                               # Project documentation
 ├── public/
 │   ├── index.html                              # CRA entry HTML
